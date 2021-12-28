@@ -1,5 +1,6 @@
 package spring.core.discount;
 
+import spring.core.member.Grade;
 import spring.core.member.Member;
 
 public class FixDiscountPolicy implements DiscountPolicy{
@@ -8,6 +9,10 @@ public class FixDiscountPolicy implements DiscountPolicy{
 
     @Override
     public int discount(Member member, int price) {
-        return 0;
+        if (member.getGrade() == Grade.VIP){
+            return discountFixAmount;
+        } else {
+            return 0;
+        }
     }
 }
