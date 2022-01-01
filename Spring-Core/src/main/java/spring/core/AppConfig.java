@@ -2,6 +2,7 @@ package spring.core;
 
 import spring.core.discount.DiscountPolicy;
 import spring.core.discount.FixDiscountPolicy;
+import spring.core.member.MemberRepository;
 import spring.core.member.MemberService;
 import spring.core.member.MemberServiceImpl;
 import spring.core.member.MemoryMemberRepository;
@@ -14,13 +15,13 @@ public class AppConfig {
         return new MemberServiceImpl(memberRepository());
     }
 
-    private MemoryMemberRepository memberRepository() {
-        return new MemoryMemberRepository();
-    }
-
     public OrderService orderService(){
         return new OrderServiceImpl(memberRepository(),
                 discountPolicy());
+    }
+
+    public MemberRepository memberRepository() {
+        return new MemoryMemberRepository();
     }
 
     public DiscountPolicy discountPolicy(){
