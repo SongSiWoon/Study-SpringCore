@@ -1,12 +1,13 @@
 # 인터넷 네트워크
-##목차
+
+## 목차
 1. [IP](#1.-IP-(Internet-Protocol))
 2. [TCP, UDP](#2.-TCP,-UDP)
 3. [PORT](#3.-PORT)
 4. [DNS](#4.-DNS(Domain-Name-System))
 ---
 
-##1. IP (Internet Protocol) 
+## 1. IP (Internet Protocol) 
 
 
 - ### 인터넷 프로토콜 역할
@@ -21,7 +22,7 @@
   ![server packet](./Image/ip2.png)
 
 
-- ###IP 프로토콜의 한계
+- ### IP 프로토콜의 한계
   - 비연결성
   ![unconnected](./Image/ip3.png)
   - 비신뢰성
@@ -33,7 +34,7 @@
     
 ## 2. TCP, UDP
 
-###1. TCP(Transmission Control Protocol)
+### 1. TCP(Transmission Control Protocol)
 
 - 프로토콜 계층
   ![protocol](./Image/tcp1.png)
@@ -67,7 +68,7 @@
 - 위의 [IP에서의 한계점](#IP-프로토콜의-한계) 3가지중 2가지는 TCP로 해결
 - 나머지 한가지 문제점 **한번에 둘 이상 연결해야 한다면?** -> 패킷들이 어떤 서버에서 오는 패킷인지 인지를 못하는 문제점 발생
 
-####PORT - 같은 IP 내에서 프로세스 구분
+#### PORT - 같은 IP 내에서 프로세스 구분
 ![port](./Image/port1.png)
 
 - PORT 번호
