@@ -2,7 +2,7 @@
 ##목차
 1. [IP](#1.-IP-(Internet-Protocol))
 2. [TCP, UDP](#2.-TCP,-UDP)
-3. PORT
+3. [PORT](#3.-PORT)
 4. DNS
 ---
 
@@ -33,5 +33,33 @@
     
 ## 2. TCP, UDP
 
+###1. TCP(Transmission Control Protocol)
+
 - 프로토콜 계층
   ![protocol](./Image/tcp1.png)
+
+  
+- TCP/IP 패킷 정보
+  ![TCP/IP packet](./Image/tcp2.png)
+
+
+- TCP 특징
+  - **연결지향 - TCP 3 way handshake**
+  ![3 way handshake](./Image/tcp3.png)
+  
+  - **데이터 전달 보증**
+
+  - **순서보장**
+  ![order](./Image/tcp4.png)
+  
+    ->  이로인해 위의 [IP의 한계 2가지 해결](#IP-프로토콜의-한계) **신뢰성** 있는 프로토콜
+
+### 2. UDP(User Datagram Protocol)
+- 기능이 거의 없음
+- 연결지향 X
+- 데이터 전달 보증 X
+- 순서 보장 X
+- IP와 거의 비슷 + **PORT** + 체크섬
+- 애플리케이션에서 추가 작업 필요
+
+
