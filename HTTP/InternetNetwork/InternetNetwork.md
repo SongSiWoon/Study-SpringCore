@@ -3,7 +3,7 @@
 1. [IP](#1.-IP-(Internet-Protocol))
 2. [TCP, UDP](#2.-TCP,-UDP)
 3. [PORT](#3.-PORT)
-4. DNS
+4. [DNS](#4.-DNS(Domain-Name-System))
 ---
 
 ##1. IP (Internet Protocol) 
@@ -77,3 +77,11 @@
     - TELNET - 23
     - HTTP - 80
     - HTTPS - 443
+
+
+## 4. DNS(Domain Name System)
+- IP는 기억하기 어렵다
+- IP는 변경될 수 있다
+
+### DNS 사용
+![DNS](./Image/dns1.png)
