@@ -1,10 +1,14 @@
 # 인터넷 네트워크
 
 ## 목차
-1. [IP](#1.-iP-(internet-protocol))
-2. [TCP, UDP](#2.-tcp,-udp)
-3. [PORT](#3.-port)
-4. [DNS](#4.-dns(domain-name-system))
+[1. IP](#1.-iP-(internet-protocol))
+
+[2. TCP, UDP](#2.-tcp,-udp)
+
+[3. PORT](#3.-port)
+
+[4. DNS](#4.-dns(domain-name-system))
+
 ---
 
 ## 1. IP (Internet Protocol) 
