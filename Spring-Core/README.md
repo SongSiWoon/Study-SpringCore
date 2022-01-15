@@ -1,4 +1,5 @@
 # 스프링 핵심 원리 - 기본편
 
-- ## [Project 생성](./src/main/project/README.md)
+- ## [Project 생성](./src/project/README.md)
 
+- ## [객체 지향 원리 적용](./src/main/java/OOPofJava/README.md)
