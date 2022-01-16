@@ -114,3 +114,26 @@
         }
     }
     ```
+
+- ### 할인 정책 변경시 문제점
+
+  ```java
+  public class OrderServiceImpl implements OrderService {
+  
+        private final MemberRepository memberRepository = new MemoryMemberRepository();
+        //private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
+        private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
+        
+        @Override
+        public Order createOrder(Long memberId, String itemName, int itemPrice) {
+            Member member = memberRepository.findById(memberId);
+            int discountPrice = discountPolicy.discount(member, itemPrice);
+
+            return new Order(memberId, itemName, itemPrice, discountPrice);
+        }
+  }
+  ```
+  - [회원 저장](#회원-저장) 및 [할인 정책](#할인-정책)을 개발시 역할과 구현을 분리하여 개발
+  - 다형성도 활용하고, 인터페이스와 구현 객체를 분리하여 개발
+  - **하지만** 기능을 확장하여 변경시 클라이언트 코드인 `OrderServiceImpl`코드도 변경해야된다 -> `OCP` 위반
+  - 또한 `OrderServiceImpl`이 `DiscountPolicy`인터페이스 뿐만아니라 `FixDiscountPolicy` 구체 클래스도 의존하고있다 -> `DIP` 위반
