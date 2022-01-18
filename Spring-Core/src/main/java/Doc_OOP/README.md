@@ -1,5 +1,20 @@
 # 순수 자바를 이용한 객체지향 설계
 
+## 목차
+[1. 현재 프로젝트 상황](#현재-프로젝트-상황)
+
+[2. 회원 저장](#회원-저장)
+
+[3. 할인 정책](#할인-정책)
+
+[4. 주문 서비스 구현체](#주문-서비스-구현체)
+
+[5. 할인 정책 변경시 문제점](#할인-정책-변경시-문제점)
+
+[6. 해결방법](#해결방법)
+
+---
+
 - ### 현재 프로젝트 상황
     ![order](./image/order.png)
   - 회원 저장소로 메모리를 사용할지, DB를 사용할지 정해지지 않은 상태
@@ -158,4 +173,4 @@
   ``` 
   - 구현 클래스가 아닌 인터페이스에만 의존하도록 한다
   - **하지만** 실행해보면 인터페이스의 구현체가 없어 `NPE(Null Pointer Exception`발생
-  - **따라서** `OrderServiceImpl`에게 `DiscountPolicy`, `MemberRepository`의 구현 객체를 대신 생성하고 **주입**해주어야 한다 -> [AppConfig](/Doc_Appconfig/README.md)
+  - **따라서** `OrderServiceImpl`에게 `DiscountPolicy`, `MemberRepository`의 구현 객체를 대신 생성하고 **주입**해주어야 한다 -> [AppConfig](/Doc_AppConfig/README.md)
