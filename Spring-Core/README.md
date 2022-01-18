@@ -2,4 +2,4 @@
 
 - ## [Project 생성](./src/project/README.md)
 
-- ## [객체 지향 원리 적용](./src/main/java/OOPofJava/README.md)
+- ## [객체 지향 원리 적용](./src/main/java/Doc_OOP/README.md)

@@ -6,7 +6,7 @@
   - 할인 정책이 정액할인, 정률할인이 정해지지 않은 상태
   - 일단 회원은 메모리를 사용하고 할인은 정액 할인으로 개발함
   
-  - **나중에 할인 정책을 변경하면서 객체지 설계 원칙 (DIP, OCP)가 지켜지는 확인!!**
+  - **나중에 할인 정책을 변경하면서 객체지 설계 원칙 (DIP, OCP)가 지켜지는지 확인!!**
 
 - ### 회원 저장
   - 회원 저장소 인터페이스 -> 역할
@@ -137,3 +137,25 @@
   - 다형성도 활용하고, 인터페이스와 구현 객체를 분리하여 개발
   - **하지만** 기능을 확장하여 변경시 클라이언트 코드인 `OrderServiceImpl`코드도 변경해야된다 -> `OCP` 위반
   - 또한 `OrderServiceImpl`이 `DiscountPolicy`인터페이스 뿐만아니라 `FixDiscountPolicy` 구체 클래스도 의존하고있다 -> `DIP` 위반
+
+- ## 해결방법
+  ```java
+  public class OrderServiceImpl implements OrderService {
+  
+        //private final MemberRepository memberRepository = new MemoryMemberRepository
+        //private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
+        private DiscountPolicy discountPolicy;
+        private MemberRepository memberRepository;
+        
+        @Override
+        public Order createOrder(Long memberId, String itemName, int itemPrice) {
+            Member member = memberRepository.findById(memberId);
+            int discountPrice = discountPolicy.discount(member, itemPrice);
+
+            return new Order(memberId, itemName, itemPrice, discountPrice);
+        }
+  }
+  ``` 
+  - 구현 클래스가 아닌 인터페이스에만 의존하도록 한다
+  - **하지만** 실행해보면 인터페이스의 구현체가 없어 `NPE(Null Pointer Exception`발생
+  - **따라서** `OrderServiceImpl`에게 `DiscountPolicy`, `MemberRepository`의 구현 객체를 대신 생성하고 **주입**해주어야 한다 -> [AppConfig](/Doc_Appconfig/README.md)
