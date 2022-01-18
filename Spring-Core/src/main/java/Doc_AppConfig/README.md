@@ -1,6 +1,6 @@
 # AppConfig
 
-- [애플리케이션의 클라이언트 부분](../Doc_OOP/README.md)인 `MemberServiceImpl`, `OrderServiceImpl`은 기능이 변경되어도 수정이 필요없도록 한다
+- [애플리케이션의 클라이언트 부분](./../Doc_OOP/README.md)인 `MemberServiceImpl`, `OrderServiceImpl`은 기능이 변경되어도 수정이 필요없도록 한다
 - 의존관계에 상관없이 실행부분만 신경 쓰도록 `AppConfig`에서 구현객체를 생성하고 생성자를 통해 **주입**해준다
 - 애플리케이션 전체 동작 방식을 설정(ex - 회원저장소 종류, 할인정책 방식)
 
@@ -78,7 +78,7 @@
 
 
 - ### 기능 변경
-  - `AppConfig`을 이용하여 생성자 주입을 하기전에는 기능을 변경할시 [여러 문제점](../Doc_OOP/README.md "5. 할인 정책 변경시 문제점 참고")(5.할인 정책 변경시 문제점 참고)이 발생하였다.
+  - `AppConfig`을 이용하여 생성자 주입을 하기전에는 기능을 변경할시 [여러 문제점](./../Doc_OOP/README.md "5. 할인 정책 변경시 문제점 참고")(5.할인 정책 변경시 문제점 참고)이 발생하였다.
     ![AppConfig 전](./image/2.png)
   
   - `AppConfig` 적용 후
