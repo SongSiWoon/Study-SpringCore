@@ -173,4 +173,4 @@
   ``` 
   - 구현 클래스가 아닌 인터페이스에만 의존하도록 한다
   - **하지만** 실행해보면 인터페이스의 구현체가 없어 `NPE(Null Pointer Exception`발생
-  - **따라서** `OrderServiceImpl`에게 `DiscountPolicy`, `MemberRepository`의 구현 객체를 대신 생성하고 **주입**해주어야 한다 -> [AppConfig](/Doc_AppConfig/README.md)
+  - **따라서** `OrderServiceImpl`에게 `DiscountPolicy`, `MemberRepository`의 구현 객체를 대신 생성하고 **주입**해주어야 한다 -> [AppConfig](./../Doc_AppConfig/README.md)
