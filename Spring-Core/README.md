@@ -10,4 +10,4 @@
 
 - ## [Container, Bean](./src/main/java/Documents/Doc_BeanCantainer/README.md)
 
-- ## [Singleton Container](./src/main/java/Documents/Doc_Singleton/README.md)
+- ## [Singleton](./src/main/java/Documents/Doc_Singleton/README.md)
