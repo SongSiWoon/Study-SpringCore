@@ -1,6 +1,5 @@
 package spring.core.beanfind;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
@@ -9,8 +8,8 @@ import spring.core.AppConfig;
 import spring.core.member.MemberService;
 import spring.core.member.MemberServiceImpl;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ApplicationContextBasicFindTest {
 
@@ -40,8 +39,8 @@ class ApplicationContextBasicFindTest {
     @Test
     @DisplayName("빈 이름으로 조회X")
     void findBeanByNameX(){
-        //ac.getBean("xxxxx", MemberService.clss);
-        MemberService memberService = ac.getBean("xxxx", MemberService.class);
+        //ac.getBean("xxxxx", MemberService.class);
+        //MemberService memberService = ac.getBean("xxxx", MemberService.class);
         assertThrows(NoSuchBeanDefinitionException.class,
                 () -> ac.getBean("xxxx", MemberService.class));
     }
