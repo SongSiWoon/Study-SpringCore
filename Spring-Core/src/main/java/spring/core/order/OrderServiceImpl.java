@@ -1,9 +1,12 @@
 package spring.core.order;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import spring.core.discount.DiscountPolicy;
 import spring.core.member.Member;
 import spring.core.member.MemberRepository;
 
+@Component
 public class OrderServiceImpl implements OrderService{
 
     private final MemberRepository memberRepository;
@@ -15,6 +18,7 @@ public class OrderServiceImpl implements OrderService{
     // 인터페이스만 의존하도록 아래처럼 변경(DIP 적용)
     private final DiscountPolicy discountPolicy;
 
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
