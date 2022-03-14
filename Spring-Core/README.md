@@ -11,3 +11,5 @@
 - ## [Container, Bean](./src/main/java/Documents/Doc_BeanCantainer/README.md)
 
 - ## [Singleton](./src/main/java/Documents/Doc_Singleton/README.md)
+
+- ## [의존관계 자동 주입](./src/main/java/Documents/Doc_DependencyInjection/README.md)
