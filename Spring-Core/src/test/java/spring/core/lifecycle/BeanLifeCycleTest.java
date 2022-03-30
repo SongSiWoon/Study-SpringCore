@@ -17,6 +17,7 @@ public class BeanLifeCycleTest {
 
     @Configuration
     static class LifeCycleConfig {
+        // @Bean(initMethod = "init", destroyMethod = "close") 메서드 이름을 지정 할 수 있음
         @Bean
         public NetworkClient networkClient() {
             NetworkClient networkClient = new NetworkClient();
