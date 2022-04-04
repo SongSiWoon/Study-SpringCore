@@ -10,8 +10,8 @@
 ## 1. URI
 
 - ### URI(Uniform Resource Identifier)
-  - `URI`는 로케이터(locator), 이름(name) 또는 둘 다 추가로 분류 가능
-![uri](./images/uri1.png)
+  - `URI`는 로케이터(locator), 이름(name) 또는 둘 다 추가로 분류 가능  
+  ![uri](./images/uri1.png)
   - **U**niform : 리소스 식별하는 통일된 방식
   - **R**esource : 자원, URI로 식별할 수 있는 모든 것(제한 없음)
   - **I**dentifier : 다른 항목과 구분하는데 필요한 정보
@@ -61,9 +61,9 @@
 - `DNS`을 조회해서 `IP`주소를 조회하여 HTTP 요청 메시지 생성
 ![url search](./images/url1.png)
   - http 요청 메시지 -> `GET /search?q=hello&hl=ko HTTP/1.1 Host: www.google.com`
-- http 메시지 전송
-![transfer http](./images/url2.png)
-- 구글 서버에서 메시지 확인후 http 응답 메시지 생성
+- http 메시지 전송  
+![transfer http](./images/url2.png)  
+- 구글 서버에서 메시지 확인후 http 응답 메시지 생성  
 ![response message](./images/url3.png)
-- 구글 서버에서 브라우저로 전송후 브라우저는 html 렌더링
+- 구글 서버에서 브라우저로 전송후 브라우저는 html 렌더링  
 ![html rendering](./images/url4.png)
