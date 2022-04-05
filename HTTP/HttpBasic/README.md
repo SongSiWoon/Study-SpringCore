@@ -103,14 +103,14 @@
 ![http message](./images/basic4.png)
 - 공백라인(CRLF) 필수!!
 
-- ### 시작 라인(요청 메시지)  
+- ### 시작 라인(요청 메시지)   
 ![request](images/basic5.png)
 
-- ### 시작 라인(응답 메시지)  
+- ### 시작 라인(응답 메시지)    
 ![response](images/basic6.png)
 
-- ### HTTP 헤더
+- ### HTTP 헤더  
 ![header](images/header.png)
 
-- ### HTTP 메시지 바디
+- ### HTTP 메시지 바디  
 ![body](images/body.png)
