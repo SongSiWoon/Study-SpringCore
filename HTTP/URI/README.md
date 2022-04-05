@@ -58,7 +58,7 @@
 
 ## 2. 웹 브라우저 요청 흐름
 - `https://www.google.com/search?q=hello&hl=ko` 검색
-- `DNS`을 조회해서 `IP`주소를 조회하여 HTTP 요청 메시지 생성
+- `DNS`을 조회해서 `IP`주소를 조회하여 HTTP 요청 메시지 생성  
 ![url search](./images/url1.png)
   - http 요청 메시지 -> `GET /search?q=hello&hl=ko HTTP/1.1 Host: www.google.com`
 - http 메시지 전송  
