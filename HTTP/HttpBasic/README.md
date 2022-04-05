@@ -83,4 +83,34 @@
 
   
 ## 4. 비 연결성
-    
+- 연결을 유지하는 모델  
+![connection](./images/basic1.png)
+  - 연결 유지 하면서 서버 자원 소모 
+- 연결을 유지하지 않는 모델   
+![connectionless](./images/basic2.png)
+  - 서버는 연결 유지X 최소한의 자원 유지
+  
+- ### 한계와 극복
+  - TCP/IP 연결을 새로 맺어야 함 - 3 way handshake 시간 추가
+  - 웹 브라우저로 사이트를 요청하면 HTML 뿐만 아니라 자바스크립트, css, 추가 이미지 등 수많은 자원이 함께 다운로드
+  - 지금은 HTTP 지속 연결(Persistent Connections)로 문제 해결  
+    ![Persistent Connections](./images/basic3.png)
+
+
+## 5. HTTP 메시지
+
+- ### 메시지 구조  
+![http message](./images/basic4.png)
+- 공백라인(CRLF) 필수!!
+
+- ### 시작 라인(요청 메시지)  
+![request](images/basic5.png)
+
+- ### 시작 라인(응답 메시지)  
+![response](images/basic6.png)
+
+- ### HTTP 헤더
+![header](images/header.png)
+
+- ### HTTP 메시지 바디
+![body](images/body.png)
