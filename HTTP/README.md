@@ -5,3 +5,5 @@
 ## [2. URI와 웹 브라우저 요청 흐름](./URI/README.md)
 
 ## [3. HTTP 기본](./HttpBasic/README.md)
+
+## [4. HTTP Method](./HttpMethod/README.md)
