@@ -8,4 +8,6 @@
 
 ## [4. HTTP Method](./HttpMethod/README.md)
 
-# [5. HTTP Method Utilize](./MethodUtilize/README.md)
+## [5. HTTP Method Utilize](./MethodUtilize/README.md)
+
+## [6. HTTP 상태코드](./HttpStatusCode/README.md)]
