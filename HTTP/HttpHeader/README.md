@@ -4,10 +4,11 @@
 
 - ### [HTTP 헤더](#HTTP-헤더)
 
+- ### [표현](#표현)
+
+- ### [협상](#협상)
 
 
-
----
 
 ## HTTP 헤더  
 
@@ -41,7 +42,6 @@
   - 데이터 유형(html, json), 데이터 길이, 압축 정보 등등
 - 표현 헤더는 표현 메타데이터와 페이로드 메시지를 구분해야 하지만 생략
 
----
 
 ## 표현
 
@@ -67,3 +67,53 @@
     - 바이트 단위
     - Transfer-Encoding(전송 인코딩)을 사용하면 Content-Length를 사용하면 안됨
 - ### 표현 헤더는 전송, 응답 **둘다** 사용
+
+
+## 협상
+#### 클라이언트가 선호하는 표현 요청 (콘텐츠 네고시에이션)
+- Accept : 클라이언트가 선호하는 미디어 타입 전달
+- Accept-Charset : 클라이언트가 선호하는 문자 인코딩
+- Accept-Encoding : 클라이언트가 선호하는 압축 인코딩
+- Accept-Language : 클라이언트가 선호하는 자연 언어
+- 협상 헤더는 요청시에만 사용
+
+### Accept-Language 적용 전
+- 한국어 브라우저에서 다중언어 지원서버로 요청을 보내면 기본 설정인 영어로 응답이 온다
+
+### Accept-Language 적용후
+
+![accept1](images/accept1.png)
+
+- Accept-Language:ko 적용시 한국어 지원 응답을 받음
+
+### 협상 우선순위1 (Quality Values(q))
+```http request
+GET /event
+Accept-Language: ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7
+```
+- Quality Values(q) 값 사용
+- 0 ~ 1, `클수록 높은 우선 순위`
+- 생략하면 1
+- Accept-Language: ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7
+  - 1 : ko-KR;q=1(q생략)
+  - 2 : ko;q=0.9
+  - 3 : en-US;q=0.8
+  - 4 : en:q=0.7
+
+### 협상 우선순위2
+```http request
+GET /event
+Accept: text/*, text/plain, text/plain;format=flowed, */*
+```
+- 구체적인 것이 우선한다
+- Accept: text/*, text/plain, text/plain;format=flowed, */*
+  1. text/plain;format=flowed
+  2. text/plain
+  3. text/*
+  4. */*
+
+### 협상 우선순위3
+- 구체적인 것을 기준으로 미디어 타입을 맞춘다
+
+![accept2](images/accept2.png)
+
