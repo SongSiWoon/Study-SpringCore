@@ -8,6 +8,8 @@
 
 - ### [협상](#협상)
 
+- ### [전송 방식](#전송-방식)
+
 
 
 ## HTTP 헤더  
@@ -116,4 +118,28 @@ Accept: text/*, text/plain, text/plain;format=flowed, */*
 - 구체적인 것을 기준으로 미디어 타입을 맞춘다
 
 ![accept2](images/accept2.png)
+
+
+## 전송 방식
+
+### 1. 단순 전송
+
+![transport1](images/transport1.png)
+- content에 대한 길이를 알 수 있을 때
+
+### 2. 압축 전송
+
+![zip](images/zip.png)
+- 용량을 줄이기 위해 `Content-Encoding`으로 명시 
+
+### 3. 분할 전송
+
+![transport3](images/transport3.png)
+- 분할한 만큼 바로 전송 마지막에는 `\r\n`으로 표시
+
+### 4. 범위 전송
+
+![transport4](images/transport4.png)
+- 이미지 같은것을 보낼 때 중간에 끊겼을 때 중간부분 부터 다시 보낼 수 있다
+- `[범위]/총 길이` 로 표현
 
