@@ -12,6 +12,12 @@
 
 - ### [일반 정보](#일반-정보)
 
+- ### [특별한 정보](#특별한-정보)
+
+- ### [인증](#인증)
+
+- ### [쿠키](#쿠키)
+
 
 ## HTTP 헤더  
 
@@ -172,3 +178,124 @@ Accept: text/*, text/plain, text/plain;format=flowed, */*
 ### Date : 메시지가 발생한 날짜와 시간
 - Date: Tue, 15 Nov 1994 08:12:31 GMT
 - 응답에서 사용
+
+
+## 특별한 정보
+
+### Host : 요청한 호스트 정보(도메인)
+![Host](images/Host.png)
+- 요청에서 사용
+- `필수`
+- 하나의 서버가 여러 도메인을 처리해야 할 때
+- 하나의 IP 주소에 여러 도메인이 적용되어 있을 때
+
+### Location : 페이지 리다이렉션
+- 웹 프라우저는 3xx 응답의 결과에 Location 헤더가 있으면, Location 위치로 자동 이동
+- 응답코드 3xx에서 설명
+- 201 (Created) : Location 값은 요청에 의해 생성도니 리소스 URI
+- 3xx (Redirection) : Location 값은 요청을 자동으로 리다이렉션 하기 위해 대상 리소스를 가리킴
+
+### Allow : 허용 가능한 HTTP 메서드
+- 405(Method Not Allowed) 에서 응답에 포함해야함
+- Allow : GET, HEAD, PUT
+
+### Retry-After : 유저 에이전트가 다음 요청을 하기까지 기다려야 하는 시간
+- 503(Service Unavailable) : 서비스가 언제까지 불능인지 알려줄 수 있음
+- Retry-After: Fri, 31 Dec 1999 23:59:59 GMT (날짜 표기)
+- Retry-After: 120 (초단위 표기)
+
+
+## 인증
+
+### Authorization
+- 클라이언트 인증 정보를 서버에 전달
+- Authorization: Basic xxxxxxxxxxxxxxxx
+
+### WWW-Authenticate
+- 리소스 접근시 필요한 인증 방법 정의
+- 401 Unauthorized 응답과 함께 사용
+- WWW-Authenticate: Newauth realm="apps", type=1,  
+  title="Login to \"apps\"", Basic realm="simple"
+
+
+## 쿠키
+- Set-Cookie : 서버에서 클라이언트로 쿠키 전달(응답)
+- Cookie : 클라이언트가 서버에서 받은 쿠키를 저장하고, HTTP 요청시 서버로 전달
+
+### 쿠키 미사용
+- 로그인  
+  ![cookie1](images/cookie1.png)
+
+- 로그인 이후 접근  
+  ![cookie2.png](images/cookie2.png)
+  - 로그인 상태가 유지가 안됨 -> Stateless
+
+### Stateless
+- HTTP는 무상태 프로토콜
+- 클라이언트와 서버가 요청과 응듭을 주고 받으면 연결이 끊어진다
+- 클라이언트가 다시 요청하면 서버는 이전 요청을 기억하지 못한다
+- 클라이언트와 서버는 서로 상태를 유지하지 않는다
+
+### 쿠키 미사용 - 문제해결
+- 모든 요청에 사용자 정보 포함   
+  ![cookie3.png](images/cookie3.png)
+  ### 문제점
+  - 모든 요청에 사용자 정보가 포함되도록 개발해야함
+  - 브라우저를 완전히 종료하고 다시 열면?
+
+### 쿠키 사용
+- 로그인
+
+  ![cookie4.png](images/cookie4.png)
+
+- 로그인 이후 접근
+
+  ![cookie5.png](images/cookie5.png)
+  - 모든 요청에 쿠키 정보 자동 포함
+
+### 쿠키란
+- ex) `set-cookie: sessionId=abcde1234; expires=Sat, 26-Dec-2020 00:00:00 GMT; path=/; domain=.google.com; Secure`
+- 사용처
+  - 사용자 로그인 세션 관리
+  - 광고 정보 트래킹
+- 쿠키 정보는 항상 서버에 전송
+  - 네트워크 트래픽 추가 유발
+  - `최소한의 정보만 사용`(세션 id, 인증 토큰)
+  - 서버에 전송하지 않고, 웹브라우저 내부에 데이터를 저장하고 싶으면 `웹 스토리지` 참고
+- `주의`
+  - 보안에 민감한 데이터는 저장하면 안됨 (주민번호, 신용카드 번호 등등)
+
+### 쿠키 생명주기
+- `Set-Cookie : expires=Sat, 26-Dec-2020 04:39:21 GMT`
+  - 만료일이 되면 쿠키 삭제
+- `Set-Cookie: max-age=3600` (3600초)
+  - 0이나 음수를 지정하면 쿠키 삭제
+- 세션 쿠키 : 만료 날짜를 생략하면 브라우저 종료시 까지만 유지
+- 영속 쿠키 : 만료 날짜를 입력하면 해당 날짜까지 유지
+
+### 쿠키 - 도메인
+- ex) `domain=example.org`
+- 명시 : 명시한 문서 기준 도메인 + 서브 도메인 포함
+  - `domain=example.org`지정 -> `dev.example.org`도 쿠키 접근
+- 생략 : 현재 문서 기준 도메인만 적용
+  - 명시와 반대로 domain=example.org`지정 -> `dev.example.org`는 쿠키 미접근
+
+### 쿠키 - 경로
+- 이 경로를 포함한 하위 경로 페이지만 쿠키 접근
+- 일반적으로 path=/ 루트로 지정
+- ex) `path=/home` 지정
+  - `/home` -> 가능
+  - `/home/level1` -> 가능
+  - `/hello` -> 불가능
+
+### 쿠키 - 보안
+- Secure
+  - 쿠키는 http, https를 구분하지 않고 전송
+  - Secure를 적용하면 https인 경우에만 전송
+- HttpOnly
+  - XSS 공격 방지
+  - 자바스크립트에서 접근 불가
+  - HTTP 전송에만 사용
+- SameSite
+  - XSRF 공격 방지
+  - 요청 도메인과 쿠키에 설정된 도메인이 같은 경우만 쿠키 전송
