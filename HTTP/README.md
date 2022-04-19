@@ -12,4 +12,6 @@
 
 ## [6. HTTP 상태코드](./HttpStatusCode/README.md)]
 
-## [7. HTTP Header](./HttpHeader/README.md)
+## [7. HTTP Header1](HttpHeader1/README.md)
+
+## [8. HTTP Header2](HttpHeader2/README.md)
