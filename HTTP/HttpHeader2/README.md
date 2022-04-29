@@ -79,3 +79,30 @@
 - `304 Not Modified` + 헤더 메타 정보만 응답(바디X)
 - 클라이언트는 서버가 보낸 응답 헤더 정보로 캐시의 메타 정보를 갱신 클라이언트는 캐시에 저장되어 있는 데이터 재활용
 - 결과적으로 네트워크 다운로드가 발생하지만 용량이 적은 헤더 정보만 다운로드 매우 실용적인 해결책
+
+# 검증 헤더와 조건부2 요청
+
+# 캐시와 조건부 요청 헤더
+
+## 캐시 제어 헤더
+
+### 1. Cache-Control: 캐시 제어
+- Cache-Control : max-age
+  - 캐시 유효 시간, 초단위
+- Cache-Control: no-cache
+  - 데이터는 캐시해도 되지만, 항상 원(origin) 서버에 검증하고 사용
+  - `If-Modified-Since`, `If-None-Match`등을 이용해서 검증
+- Cache-Control: no-store
+  - 데이터에 민감한 정보가 있으므로 저장하면 안됨
+  - 메모리에서 사용하고 최대한 빨리 삭제
+
+### 2. Pragma: 캐시 제어(하위 호환)
+- Pragma: no-cache
+- HTTP 1.0 하위 호환
+
+### 3. Expires: 캐시 만료일 지정(하위 호환)
+- `expires: Mon, 01 Jan 1990 00:00:00 GMT`
+- 캐시 만료일을 정확한 날짜로 지정
+- HTTP 1.0 부터 사용
+- 지금은 더 유연한 Cache-Control: max-age 권장
+- Cache-Control: max-age와 함께 사용하면 Expires는 무시
