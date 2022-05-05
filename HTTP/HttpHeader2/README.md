@@ -117,9 +117,24 @@
 ### `ETag, If-None-Match`
 - ETag(Entity Tag)
 - 캐시용 데이터에 임의의 고유한 버전 이름을 달아둠
-  - ex) ETag
+  - ex) `ETag: "v1.0", ETag: "a2jiodwjekjl3"`
 - 데이터가 변경되면 이 이름을 바꾸어서 변경함(Hash를 다시 생성)
+  - ex) `ETag: "aaaaa" -> ETag: "bbbbb"`
+  
+  ![ETag.png](images/ETag.png)
+
+  ![ETag2.png](images/ETag2.png)
 - 진짜 단순하게 ETag만 보내서 같으면 유지, 다르면 다시 받기!
+
+
+### `ETga, If-None-Match` 정리
+- 진짜 단순하게 ETag만 서버에 보내서 같으면 유지, 다르면 다시 받기!
+- 캐시 제어 로직을 서버에서 완전히 관리
+- 클라이언트는 단순히 이 값을 서버에 제동(클라이언트는 캐시 매커니즘을 모름)
+- ex)
+  - 서버는 배타 오픈 기간인 3일 동안 파일이 변경되어도 `ETag`를 동일하게 유지
+  - 애플리케이션 배포 주기에 맞추어 ETag 모두 갱신
+
 
 # 캐시와 조건부 요청 헤더
 
