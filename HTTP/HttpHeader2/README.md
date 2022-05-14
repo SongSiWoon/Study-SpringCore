@@ -4,10 +4,10 @@
 
 - ### [캐시 기본 동작](#캐시-기본-동작)
 - ### [검증 헤더와 조건부 요청1](#검증-헤더와-조건부-요청1)
-- ### 검증 헤더와 조건부 요청2
-- ### 캐시와 조건부 요청 헤더
-- ### 프록시 캐시
-- ### 캐시 무효화
+- ### [검증 헤더와 조건부 요청2](#검증-헤더와-조건부-요청2)
+- ### [캐시와 조건부 요청 헤더](#캐시와-조건부-요청-헤더)
+- ### [프록시 캐시](#프록시-캐시)
+- ### [캐시 무효화](#캐시-무효화)
 
 # 캐시 기본 동작
 
@@ -81,7 +81,7 @@
 - 결과적으로 네트워크 다운로드가 발생하지만 용량이 적은 헤더 정보만 다운로드 매우 실용적인 해결책
 
 
-# 검증 헤더와 조건부2 요청
+# 검증 헤더와 조건부 요청2
 
 ## 검증 헤더
 - 캐시 데이터와 서버 데이터가 같은지 검증하는 데이터
@@ -160,3 +160,58 @@
 - HTTP 1.0 부터 사용
 - 지금은 더 유연한 Cache-Control: max-age 권장
 - Cache-Control: max-age와 함께 사용하면 Expires는 무시
+
+
+# 프록시 캐시
+
+## 원 서버 직접 접근
+
+![proxy.png](images/proxy.png)
+- 예를 들어 하나의 이미지를 다운받는데 0.5초라는 딜레이가 생김
+
+## 프록시 캐시 도입
+
+![proxy2.png](images/proxy2.png)
+- 미국 서버로 직접 접근하는 것이 아니라 한국의 어딘가에 있는 프록시 서버에 접
+- 첫번째 유저는 미국의 서버로 접근하기에 느림
+- 두번째 유저부터는 한국의 프록시 캐시에 접근하기 때문에 빨라진다
+
+## Cache-Control
+### 캐시 지시어(directives) - 기타
+- `Cache-Control: public` : 응답이 public 캐시에 저장되어도 됨
+- `Cache-Control: private` : 응답이 해당 사용자만을 위한 것, private 캐시에 저장해야 함(기본값)
+- `Cache-Control: s-maxage` : 프록시 캐시에만 적용되는 max-age
+- `Age: 60`(HTTP 헤더) : 오리진 서버에 응답 후 프록시 캐시 내에 머문 시간(초)
+
+
+# 캐시 무효화
+
+### Cache-Control(확실한 캐시 무효화 응답)
+- 아래의 코드 모두 설정
+- `Cache-Control: no-cache, no-store, must-revalidate`
+- `Pragma: no-cache`
+  - HTTP 1.0 하위 호환
+
+## Cache-Control
+### 캐시 지시어(directives) - 확실한 캐시 무효화
+- `Cache-Control: no-cache` : 데이터는 캐시해도 되지만, 항상 원 서버에 검증하고 사용(이름에 주의)
+- `Cache-Control: no-store` : 데이터에 민감한 정보가 있으므로 저장하면 안됨(메모리에서 사용하고 최대한 빨리 삭제)
+- `Cache-Control: must-revalidate`
+  - 캐시 만료후 최초 조회시 원 서버에 검증
+  - 원 서버 접근 실패시 반드시 오류가 발생 - 504(Gateway Timeout)
+  - `must-revalidate`는 캐시 유효시간이라면 캐시를 사용함
+- `Pragma: no-cache`: HTTP 1.0 하위 호환 
+
+## no-cache vs must-revalidate
+
+### no-cache 기본동작
+
+![invalidation.png](images/invalidation.png)
+
+### no-cache
+
+![invalidation2.png](images/invalidation2.png)
+
+### must-revalidate
+
+![invalidation3.png](images/invalidation3.png)
